@@ -1,0 +1,14 @@
+# Changes here will be overwritten by Copier; NEVER EDIT MANUALLY
+_commit: v4.3.8
+_src_path: https://github.com/jupyterlab/extension-template
+author_email: tomoyan596@tomoyan.net
+author_name: tomoyan596
+has_binder: true
+has_settings: true
+kind: theme
+labextension_name: jupyterlab-monster-extension
+project_short_description: A JupyterLab extension.
+python_name: jupyterlab-monster-extension
+repository: https://github.com/tomoyan596/jupyterlab-monster-extension
+test: true
+
