@@ -1,0 +1,8 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "jupyterlab-monster-extension",
+  "description": "jupyterlab-monster-extension settings.",
+  "type": "object",
+  "properties": {},
+  "additionalProperties": false
+}

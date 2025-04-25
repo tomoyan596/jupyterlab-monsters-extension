@@ -1,12 +1,68 @@
-@import url('./variables.css');
+/* -----------------------------------------------------------------------------
+| reference:
+| https://github.com/jupyterlab/jupyterlab/blob/4.3.x/packages/theme-dark-extension/style/theme.css
+|---------------------------------------------------------------------------- */
+@import url('base.css');
+@import url('variables.css');
+@import url('custom.css');
+
+/* @import url('./neondreams.css'); */
 
 /* Set the default typography for monospace elements */
-tt,
-code,
-kbd,
-samp,
-pre {
+.jp-ThemedContainer tt,
+.jp-ThemedContainer code,
+.jp-ThemedContainer kbd,
+.jp-ThemedContainer samp,
+.jp-ThemedContainer pre {
   font-family: var(--jp-code-font-family);
   font-size: var(--jp-code-font-size);
   line-height: var(--jp-code-line-height);
+}
+
+#jupyterlab-splash.dark {
+  background-color: var(--jp-layout-color3);
+}
+
+.lm-DockPanel-tabBar,
+.lm-TabPanel-tabBar {
+  color: var(--jp-ui-font-color1);
+  font-size: var(--jp-ui-font-size2);
+}
+
+/* CodeMirror 6 custom & fix */
+
+/* .cm-editor {
+    letter-spacing: 1.5px;  /* for HacGen 
+} */
+
+/* .ͼ1 .cm-scroller {
+  font-family: inherit; /* fix code Font Family setting 
+  line-height: inherit; /* fix code Line Height setting 
+} */
+
+/* https://developer.mozilla.org/ja/docs/Web/CSS/gradient/radial-gradient */
+
+/* .ͼ1 .cm-highlightSpace {
+  background-image: radial-gradient(farthest-corner at 45% 150%, #dd0 20%, #d00 40%, #1ae 40%, transparent 60%);
+} */
+.ͼ1 .cm-highlightSpace {
+  background-image: radial-gradient(circle at 50% 55%, #6a6 8%, transparent 0%);
+}
+
+.ͼ1 .cm-gutters {
+  color: var(--jp-ui-font-color1);
+}
+
+/* fix illegible yellow background in exception stacktrace */
+:where(
+  .jp-RenderedText[data-mime-type='application/vnd.jupyter.stderr']
+    pre
+    .ansi-yellow-bg
+) {
+  color: black;
+}
+
+.jp-DirListing-item {
+  padding: var(--jp-dirlisting-padding-height)
+    var(--jp-dirlisting-padding-width);
 }

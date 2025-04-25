@@ -3,7 +3,7 @@ requires = ["hatchling>=1.5.0", "jupyterlab>=4.0.0,<5", "hatch-nodejs-version>=0
 build-backend = "hatchling.build"
 
 [project]
-name = "jupyterlab-monster-extension"
+name = "jupyterlab-monsters-extension"
 readme = "README.md"
 license = { file = "LICENSE" }
 requires-python = ">=3.9"
@@ -34,23 +34,23 @@ source = "nodejs"
 fields = ["description", "authors", "urls", "keywords"]
 
 [tool.hatch.build.targets.sdist]
-artifacts = ["jupyterlab-monster-extension/labextension"]
+artifacts = ["jupyterlab-monsters-extension/labextension"]
 exclude = [".github", "binder"]
 
 [tool.hatch.build.targets.wheel.shared-data]
-"jupyterlab-monster-extension/labextension" = "share/jupyter/labextensions/jupyterlab-monster-extension"
-"install.json" = "share/jupyter/labextensions/jupyterlab-monster-extension/install.json"
+"jupyterlab-monsters-extension/labextension" = "share/jupyter/labextensions/@tomoyan596/jupyterlab-monsters-extension"
+"install.json" = "share/jupyter/labextensions/@tomoyan596/jupyterlab-monsters-extension/install.json"
 
 [tool.hatch.build.hooks.version]
-path = "jupyterlab-monster-extension/_version.py"
+path = "jupyterlab-monsters-extension/_version.py"
 
 [tool.hatch.build.hooks.jupyter-builder]
 dependencies = ["hatch-jupyter-builder>=0.5"]
 build-function = "hatch_jupyter_builder.npm_builder"
 ensured-targets = [
-    "jupyterlab-monster-extension/labextension/package.json",
+    "jupyterlab-monsters-extension/labextension/package.json",
 ]
-skip-if-exists = ["jupyterlab-monster-extension/labextension/static/style.js"]
+skip-if-exists = ["jupyterlab-monsters-extension/labextension/static/style.js"]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 build_cmd = "build:prod"
@@ -60,7 +60,7 @@ npm = ["jlpm"]
 build_cmd = "install:extension"
 npm = ["jlpm"]
 source_dir = "src"
-build_dir = "jupyterlab-monster-extension/labextension"
+build_dir = "jupyterlab-monsters-extension/labextension"
 
 [tool.jupyter-releaser.options]
 version_cmd = "hatch version"

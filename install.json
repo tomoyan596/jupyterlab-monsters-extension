@@ -1,5 +1,5 @@
 {
   "packageManager": "python",
-  "packageName": "jupyterlab-monster-extension",
-  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall the package jupyterlab-monster-extension"
+  "packageName": "@tomoyan596/jupyterlab-monster-extension",
+  "uninstallInstructions": "Use your Python package manager (pip, conda, etc.) to uninstall the package @tomoyan596/jupyterlab-monster-extension"
 }

@@ -1,7 +1,9 @@
-# jupyterlab-monster-extension
+# jupyterlab-monsters-extension
+日本語の説明はこちら💁‍♂️ [JupyterLab Extension 開発 [ともやん・どっと・ねっと]](https://www.tomoyan.net/python/jupyterlab/extension_dev)
+![image](screens/screenshot_001.png)
 
-[![Github Actions Status](https://github.com/tomoyan596/jupyterlab-monster-extension/workflows/Build/badge.svg)](https://github.com/tomoyan596/jupyterlab-monster-extension/actions/workflows/build.yml)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tomoyan596/jupyterlab-monster-extension/main?urlpath=lab)
+[![Github Actions Status](https://github.com/tomoyan596/jupyterlab-monsters-extension/workflows/Build/badge.svg)](https://github.com/tomoyan596/jupyterlab-monsters-extension/actions/workflows/build.yml)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/tomoyan596/jupyterlab-monsters-extension/main?urlpath=lab)
 
 
 A JupyterLab extension.
@@ -15,7 +17,7 @@ A JupyterLab extension.
 To install the extension, execute:
 
 ```bash
-pip install jupyterlab-monster-extension
+pip install jupyterlab-monsters-extension
 ```
 
 ## Uninstall
@@ -23,7 +25,7 @@ pip install jupyterlab-monster-extension
 To remove the extension, execute:
 
 ```bash
-pip uninstall jupyterlab-monster-extension
+pip uninstall jupyterlab-monsters-extension
 ```
 
 ## Contributing
@@ -38,7 +40,7 @@ The `jlpm` command is JupyterLab's pinned version of
 
 ```bash
 # Clone the repo to your local environment
-# Change directory to the jupyterlab-monster-extension directory
+# Change directory to the jupyterlab-monsters-extension directory
 # Install package in development mode
 pip install -e "."
 # Link your development version of the extension with JupyterLab
@@ -67,12 +69,12 @@ jupyter lab build --minimize=False
 ### Development uninstall
 
 ```bash
-pip uninstall jupyterlab-monster-extension
+pip uninstall jupyterlab-monsters-extension
 ```
 
 In development mode, you will also need to remove the symlink created by `jupyter labextension develop`
 command. To find its location, you can run `jupyter labextension list` to figure out where the `labextensions`
-folder is located. Then you can remove the symlink named `jupyterlab-monster-extension` within that folder.
+folder is located. Then you can remove the symlink named `jupyterlab-monsters-extension` within that folder.
 
 ### Testing the extension
 

@@ -1,43 +1,27 @@
 import {
-  JupyterFrontEnd,
   JupyterFrontEndPlugin
-} from '@jupyterlab/application';
+} from '@jupyterlab/application'
 
-import { IThemeManager } from '@jupyterlab/apputils';
+import { pluginJupyterTheme } from './jupyter-theme'
+import { pluginEditorTheme } from './editor-theme'
+import { pluginEditorLanguage } from './editor-language'
+import { pluginEditorExtension } from './editor-extension'
 
-import { ISettingRegistry } from '@jupyterlab/settingregistry';
+//export * from './extensions'
 
 /**
- * Initialization data for the jupyterlab-monster-extension extension.
- */
-const plugin: JupyterFrontEndPlugin<void> = {
-  id: 'jupyterlab-monster-extension:plugin',
-  description: 'A JupyterLab extension.',
-  autoStart: true,
-  requires: [IThemeManager],
-  optional: [ISettingRegistry],
-  activate: (app: JupyterFrontEnd, manager: IThemeManager, settingRegistry: ISettingRegistry | null) => {
-    console.log('JupyterLab extension jupyterlab-monster-extension is activated!');
-    const style = 'jupyterlab-monster-extension/index.css';
+ * Initialization data for the jupyter_tomoyan_extension extension.
+ *
+  * reference:
+ *   https://jupyterlab.readthedocs.io/en/stable/api/classes/codemirror.EditorThemeRegistry-1.html
+ *   https://github.com/jupyterlab/jupyterlab/blob/4.3.x/packages/codemirror-extension/src/services.tsx#L91
+ *   https://github.com/jupyterlab/jupyterlab/blob/4.3.x/packages/codemirror/src/language.ts#L536
+*/
+const plugins: JupyterFrontEndPlugin<void>[] = [
+  pluginJupyterTheme,
+  pluginEditorTheme,
+  pluginEditorLanguage,
+  pluginEditorExtension
+]
 
-    manager.register({
-      name: 'jupyterlab-monster-extension',
-      isLight: true,
-      load: () => manager.loadCSS(style),
-      unload: () => Promise.resolve(undefined)
-    });
-
-    if (settingRegistry) {
-      settingRegistry
-        .load(plugin.id)
-        .then(settings => {
-          console.log('jupyterlab-monster-extension settings loaded:', settings.composite);
-        })
-        .catch(reason => {
-          console.error('Failed to load settings for jupyterlab-monster-extension.', reason);
-        });
-    }
-  }
-};
-
-export default plugin;
+export default plugins
