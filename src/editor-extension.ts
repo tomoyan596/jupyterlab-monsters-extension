@@ -1,15 +1,20 @@
 import {
   JupyterFrontEnd,
   JupyterFrontEndPlugin
-} from '@jupyterlab/application'
+} from '@jupyterlab/application';
 
-import { IEditorExtensionRegistry, EditorExtensionRegistry } from '@jupyterlab/codemirror'
-import { ITranslator, nullTranslator } from '@jupyterlab/translation'
+import {
+  IEditorExtensionRegistry,
+  EditorExtensionRegistry
+} from '@jupyterlab/codemirror';
+import { ITranslator, nullTranslator } from '@jupyterlab/translation';
 
-import { Extension, Facet, combineConfig } from '@codemirror/state'
-import { EditorView } from '@codemirror/view'
+import { Extension, Facet, combineConfig } from '@codemirror/state';
+import { EditorView } from '@codemirror/view';
+import { basicSetup } from 'codemirror'
 
-const PLUGIN_ID = '@tomoyan596/jupyterlab-monsters-extension:editor_extension'
+const EXTENSION_ID = '@tomoyan596/jupyterlab-monsters-extension';
+const PLUGIN_ID = `${EXTENSION_ID}:editor-extension`;
 
 /**
  * Editor customizable styles
@@ -18,20 +23,20 @@ export type CustomTheme = {
   /**
    * Font family
    */
-  fontFamily: string | null
+  fontFamily: string | null;
   /**
    * Font size
    */
-  fontSize: number | null
+  fontSize: number | null;
   /**
    * Line height
    */
-  lineHeight: number | null
+  lineHeight: number | null;
   /**
    * Letter Spacing
    */
-  letterSpacing: string | null
-}
+  letterSpacing: string | null;
+};
 
 const customThemeConfig = Facet.define<CustomTheme, CustomTheme>({
   combine(configs: readonly CustomTheme[]) {
@@ -49,28 +54,28 @@ const customThemeConfig = Facet.define<CustomTheme, CustomTheme>({
         lineHeight: (a, b) => a ?? b,
         letterSpacing: (a, b) => a ?? b
       }
-    )
+    );
   }
-})
+});
 function setEditorStyle(view: EditorView): Record<string, string> | null {
   const { fontFamily, fontSize, lineHeight, letterSpacing } =
-    view.state.facet(customThemeConfig)
+    view.state.facet(customThemeConfig);
 
-  let style = ''
+  let style = '';
   if (fontSize) {
-    style += `font-size: ${fontSize}px !important;`
+    style += `font-size: ${fontSize}px !important;`;
   }
   if (fontFamily) {
-    style += `font-family: ${fontFamily} !important;`
+    style += `font-family: ${fontFamily} !important;`;
   }
   if (lineHeight) {
-    style += `line-height: ${lineHeight.toString()} !important`
+    style += `line-height: ${lineHeight.toString()} !important`;
   }
   if (letterSpacing) {
-    style += `line-height: ${letterSpacing} !important`
+    style += `line-height: ${letterSpacing} !important`;
   }
 
-  return { style: style }
+  return { style: style };
 }
 
 export function customTheme(config: CustomTheme): Extension {
@@ -79,35 +84,47 @@ export function customTheme(config: CustomTheme): Extension {
     EditorView.editorAttributes.of(setEditorStyle),
     EditorView.theme({
       '.cm-scroller': {
-        fontFamily: "{config.letterSpacing}"
+        fontFamily: '{config.letterSpacing}'
       }
     })
-  ]
+  ];
 }
 
 /**
  * Added CodeMirror theme for jupyter-tomoyan-extension extension.
  *
-  * reference:
+ * reference:
  *   https://jupyterlab.readthedocs.io/en/stable/api/classes/codemirror.EditorThemeRegistry-1.html
  *   https://github.com/jupyterlab/jupyterlab/blob/4.3.x/packages/codemirror-extension/src/services.tsx#L91
  *   https://github.com/jupyterlab/jupyterlab/blob/4.3.x/packages/codemirror/src/language.ts#L536
-*/
+ */
 export const pluginEditorExtension: JupyterFrontEndPlugin<void> = {
   id: PLUGIN_ID,
   description: 'A JupyterLab extension.',
   autoStart: true,
   requires: [IEditorExtensionRegistry, ITranslator],
-  activate: (app: JupyterFrontEnd, extensions: IEditorExtensionRegistry, translator: ITranslator) => {
-    console.log(`JupyterLab extension ${PLUGIN_ID} is activated!`)
+  activate: (
+    app: JupyterFrontEnd,
+    extensions: IEditorExtensionRegistry,
+    translator: ITranslator
+  ) => {
+    console.log(`JupyterLab extension ${PLUGIN_ID} is activated!`);
 
-    const trans = (translator ?? nullTranslator).load('jupyterlab')
+    const trans = (translator ?? nullTranslator).load('jupyterlab');
+
+    extensions.addExtension({
+      name: 'basicSetup',
+      factory: () =>
+        EditorExtensionRegistry.createConfigurableExtension<Extension>(
+          () => basicSetup
+        ),
+    })
 
     extensions.addExtension({
       name: 'customStyles1',
       factory: () =>
-        EditorExtensionRegistry.createConfigurableExtension<CustomTheme>(config =>
-          customTheme(config)
+        EditorExtensionRegistry.createConfigurableExtension<CustomTheme>(
+          config => customTheme(config)
         ),
       default: {
         fontFamily: null,
@@ -144,6 +161,5 @@ export const pluginEditorExtension: JupyterFrontEndPlugin<void> = {
 
     console.log('extensions:')
     console.log(extensions)
-
   }
-}
+};

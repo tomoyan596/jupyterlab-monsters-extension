@@ -4,7 +4,7 @@
 .jp-SideBar.p-TabBar,
 #jp-top-panel,
 .jp-LabShell[data-shell-mode='single-document'] #jp-menu-panel {
-  /*  background-color: rgba(34, 33, 54, 0.65);  /* last value is the transparency */
+  background-color: rgba(34, 33, 54, 0.65); /* last value is the transparency */
 }
 
 /* Background */
@@ -36,15 +36,14 @@
 */
 
 /* or use an image as the background */
-.jp-Editor {
-  /* .xterm .xterm-screen canvas { */
+.jp-Editor,
+.jp-Terminal .xterm .xterm-screen canvas,
+#setting-editor .lm-SplitPanel {
   background-image: url('./images/background.svg');
-
-  /* background-blend-mode: darken; */
+  /*  background-blend-mode: darken; */
   background-repeat: no-repeat;
   background-size: 70%;
-
-  /* background-color: #1117; */
+  /*  background-color: #1117; */
   background-position: 60% 50%; /* right of center */
 }
 

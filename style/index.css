@@ -29,6 +29,10 @@
   font-size: var(--jp-ui-font-size2);
 }
 
+.jp-mod-highlight {
+  color: lime;
+}
+
 /* CodeMirror 6 custom & fix */
 
 /* .cm-editor {

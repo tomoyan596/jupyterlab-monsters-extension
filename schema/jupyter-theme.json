@@ -1,0 +1,15 @@
+{
+  "jupyter.lab.shortcuts": [],
+  "title": "Monster's Extension",
+  "description": "Settings for the JupyterLab Monster's Extension.",
+  "type": "object",
+  "properties": {
+    "backgroundImage": {
+      "type": "boolean",
+      "title": "Enable background image",
+      "description": "Enable/Disable background images.",
+      "default": true
+    }
+  },
+  "additionalProperties": false
+}
